@@ -1,14 +1,28 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
+# Word-Xtractor | Python Powered 
 
+6 detailed text documents provide the source material for this app to locate 10 of the most commonly used words. The word limit is flexible and can be adjusted by updating the main python code file.
 
-Hi there! Welcome to AWS Cloud9!
+The user can select a text file (1 - 6) to then initiate a summary table of analysis. 
 
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
+Summary of data analysis:
+- `Most Common Words` 
+- `Frequency` 
+- `% of total document` 
 
-Happy coding!
+In addition, the user can continue to search another text file or close the application in python shell.
+
+## Local Deployment
+
+### Via GitHub
+    - Manually download the application locally to your machine and then upload to your preferred IDE
+
+### Via the CLI
+    - Clone my repo via Git using the following repo address `https://github.com/Spagettileg/word-xtractor`
+    - Enter `python3 word.py` to start the app.
+
+***
+
+<div align="center">
+<img src="assets/img/wordsearch.png">
+</div>
+
