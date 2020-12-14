@@ -119,3 +119,29 @@ def get_txt_file():
                         result[item] += 1
                         
             return result
+            
+        """
+        Print table to be viewed by the user.
+        """
+        
+        def print_table(title, dict):
+            star = '*'.center(80, '*') # To mark out rows of the table
+            print(star)
+            
+            print('*' + title.center(78) + '*') # Table title
+            print(star)
+            
+            print('*' + "Common Words".center(25) +
+                  '*' + "Frequency".center(25) +
+                  '*' + "% of Document".center(26) + '*') # Column headings
+            print(star)
+            
+            # Loop through dictionary to print word, frequency & % value too.
+            for key, value in dict.items():
+                print('*' + key.center(25) +
+                      '*' + str(value).center(25) +
+                      '*' + (str('{0:.2f}' .format(value / total_words)) + '%'
+                      .center(26) + '*'))
+                print(star)
+                
+                print("\n") # Spacer between tables 
