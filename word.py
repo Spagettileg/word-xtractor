@@ -78,7 +78,7 @@ def get_txt_file():
     document.close()
     # document content assigned to string, then split string
     document_string = str(content)
-    
+
     return document_string
 
 
@@ -101,7 +101,10 @@ def document_dictionary(document):
 
 '''
 dictionary for 128 common words to be viewed on/off from table reports.
+there are plenty more that exist in the global ecosystem 
 '''
+
+
 def document_dictionary_uncommon(document):
     common_words = {"a", "about", "after", "all", "also", "an", "and",
                 "any", "are", "as", "at", "back", "be", "because",
@@ -161,30 +164,34 @@ def print_table(title, dict):
     # spacer between tables.
     print("\n")
 
-''' main variables defined. '''
+"""
+main variables defined. 
+"""
+
+
 while True:
-    # notes to user 
+    # notes to user
     print_notes()
 
-    # get document selected by user 
+    # get document selected by user
     document = get_txt_file()
 
-    # for words & word frequency 
+    # for words & word frequency
     words_count = document_dictionary(document)
 
-    # for words & word frequency, in lower case 
+    # for words & word frequency, in lower case
     words_count_lower = document_dictionary(document.lower())
 
-    # check words and remove 128 common words, re dictionary, in lower case 
+    # check words and remove 128 common words, re dictionary, in lower case
     words_count_uncommon = document_dictionary_uncommon(document.lower())
 
-    # document total word count 
+    # document total word count
     total_words = sum(words_count.values())
 
-    # dictionary inc top 10 words from document 
+    # dictionary inc top 10 words from document
     top_words = dict(Counter(words_count).most_common(10))
 
-    # dictionary inc top 10 words from document, lower case 
+    # dictionary inc top 10 words from document, lower case
     top_words_lower = dict(Counter(words_count_lower).most_common(10))
 
     # Dictionary inc top 10 uncommon words from document, lower case
