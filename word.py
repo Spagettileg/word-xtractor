@@ -171,3 +171,29 @@ def get_txt_file():
             # ** Dictionary inc top 10 uncommon words from document, lower case
             top_uncommon_words_lower = dict(Counter(words_count_uncommon)
                                             .most_common(10))
+                                            
+        """
+        Printing the tables.
+        """
+            title = "Top 10 words used (inc upper & lower case)"
+            print_table(title, top_words)
+            
+            title = "Top 10 words used (all text in lower case)"
+            print_table(title, top_words_lower)
+            
+            title = "Top 10 words used (lower case, less common words)"
+            print_table(title, top_uncommon_words_lower)
+            
+        """
+        Chance for user to review another document.
+        """
+        
+            while True:
+                print('Review another document? Y/N')
+                do_again = str(input())
+                if do_again.upper() == 'N':
+                    exit()
+                elif do_again.upper() == 'Y':
+                    print('Please enter Y or N')
+                else:
+                    break
