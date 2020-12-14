@@ -67,3 +67,9 @@ def get_txt_file():
         document_string = str(content) # Document content assigned to string, then split string
         
         return document_string
+        
+        """
+        Dictionary for all words contained in txt documents & frequency used.
+        """
+        
+        
