@@ -145,3 +145,29 @@ def get_txt_file():
                 print(star)
                 
                 print("\n") # Spacer between tables 
+                
+        """
+        Main variables defined.
+        """
+        
+        While True:
+            # ** Instructions to user **
+            print_instructions()
+            # ** Get document selected by user **
+            document = get_txt_file()
+            # ** For words & word frequency **
+            words_count = document_dictionary(document)
+            # ** For words & word frequency, in lower case ** 
+            words_count_lower = document_dictionary(document.lower())
+            # ** Check words and remove 128 common words, re dictionary ** 
+            words_count_uncommon = document_dictionary_uncommon
+                                   (document.lower())
+            # ** Document total word count ** 
+            total_words = sum(words_count.values())
+            # ** Dictionary inc top 10 words from document **
+            top_words = dict(Counter(words_count).most_common(10))
+            # ** Dictionary inc top 10 words from document, lower case **
+            top_words_lower = dict(Counter(words_count_lower).most_common(10))
+            # ** Dictionary inc top 10 uncommon words from document, lower case
+            top_uncommon_words_lower = dict(Counter(words_count_uncommon)
+                                            .most_common(10))
