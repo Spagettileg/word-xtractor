@@ -72,4 +72,50 @@ def get_txt_file():
         Dictionary for all words contained in txt documents & frequency used.
         """
         
+        def document_dictionary(document):
+            # Key value pair | Key = word | Value = word frequency
+            result = {}
+            for item in document.split():
+                if item not in result:
+                    result[item] = 1
+                else:
+                    result[item] += 1
+                    
+            return result
+            
+        """
+        Dictionary for 128 common words to be viewed on/off from table reports.  
+        """
         
+        def document_dictionary_uncommon(document):
+            common_words = {"a", "about", "after", "all", "also", "an", "and",
+                            "any", "are", "as", "at", "back", "be", "because",
+                            "been", "being", "but", "by", "can", "change",
+                            "come", "could", "day", "do", "dont", "even",
+                            "first", "for", "from", "get", "give", "go",
+                            "good", "had", "has", "have", "he", "her", "here", 
+                            "him", "his", "how", "i", "if", "in", "into",
+                            "is", "it", "its", "just", "keep", "know", "let", 
+                            "lets", "like", "look", "make", "many", "me",
+                            "more", "most", "mr", "mrs", "my", "need", "new", 
+                            "no", "not", "now", "of", "on", "one", "only",
+                            "or", "other", "our", "out", "over", "own", "part", 
+                            "person", "push", "say", "said", "see", "she", 
+                            "so", "some", "take", "than", "that", "thats",
+                            "the", "their", "them", "then", "there", "these",
+                            "they", "think", "this", "those", "time", "to",
+                            "two", "up", "us", "use", "wait", "was", "way", 
+                            "we", "well", "were", "weve", "what", "when",
+                            "where", "which", "who", "why", "will", "with",
+                            "work", "would", "year", "you", "your"}
+            
+            # Dictionary created. Key = word. Value = word frequency                
+            result = {}
+            for item in document.split():
+                if item not in common_words:
+                    if item not in result:
+                        result[item] = 1
+                    else:
+                        result[item] += 1
+                        
+            return result
