@@ -12,14 +12,14 @@ def print_notes():
     '''
     Note to user on purpose of this app
     '''
-    star = '*'.center(78, '*')
+    star = '*'.center(80, '*')
     print(star)
     message = 'Select document number, from 1 to 6'
-    print('*' + message.center(76) + '*')
+    print('*' + message.center(78) + '*')
     message = 'Today, we can find the 10 most common words used.'
-    print('*' + message.center(76) + '*')
+    print('*' + message.center(78) + '*')
     message = 'All returned words sourced from this apps directory.'
-    print('*' + message.center(76) + '*')
+    print('*' + message.center(78) + '*')
     print(star + '\n')  # New line
 
 
@@ -49,7 +49,7 @@ def get_txt_file():
 
     # If no txt files found, start again & find files
     if count == 0:
-        print("No files were found in the working folder. The program will now exit.")
+        print("No files were found in the directory. Program to exit.")
         exit()
 
     # Get users txt document choice
@@ -68,7 +68,8 @@ def get_txt_file():
             print("That was not a valid number.  Try again...")
         except IndexError:
             # Error message
-            print('That value was out of range.  please select between 1 and ' + str(count))
+            print('Number choice out of range, please select between 1 and' +
+                  str(count))  # Error message
 
     # open selected document
     document = open(filename, encoding="utf8")
@@ -100,46 +101,47 @@ def document_dictionary(document):
 
 
 '''
-dictionary for 128 common words to be viewed on/off from table reports.
-there are plenty more that exist in the global ecosystem 
+dictionary for 131 common words to be viewed on/off from table reports.
+there are plenty more that exist in the global ecosystem.
 '''
 
 
 def document_dictionary_uncommon(document):
-    common_words = {"a", "about", "after", "all", "also", "an", "and",
-                "any", "are", "as", "at", "back", "be", "because",
-                "been", "being", "but", "by", "can", "change",
-                "come", "could", "day", "do", "don't", "even",
-                "first", "for", "from", "get", "give", "go",
-                "good", "had", "has", "have", "he", "her", "here",
-                "him", "his", "how", "i", "if", "in", "into",
-                "is", "it", "it's", "its",  "just", "keep", "know", "let",
-                "let's", "like", "look", "make", "many", "me",
-                "more", "most", "mr", "mrs", "my", "need", "new",
-                "no", "not", "now", "of", "on", "one", "only",
-                "or", "other", "our", "out", "over", "own", "part",
-                "person", "push", "say", "said", "see", "she",
-                "so", "some", "take", "than", "that", "that's",
-                "the", "their", "them", "then", "there", "these",
-                "they", "think", "this", "those", "time", "to",
-                "two", "up", "us", "use", "wait", "was", "way",
-                "we", "well", "we'll", "were", "we've", "what", "when",
-                "where", "which", "who", "why", "will", "with",
-                "work", "would", "year", "you", "your"}
+            common_words = {"a", "about", "after", "all", "also", "an", "and",
+                            "any", "are", "as", "at", "back", "be", "because",
+                            "been", "being", "but", "by", "can", "change",
+                            "come", "could", "day", "do", "don't", "even",
+                            "first", "for", "from", "get", "give", "go",
+                            "good", "had", "has", "have", "he", "her", "here",
+                            "him", "his", "how", "i", "if", "in", "into",
+                            "is", "it", "it's", "its", "just", "keep", "know",
+                            "let", "let's", "like", "look", "make", "many",
+                            "me", "more", "most", "mr", "mrs", "my", "need",
+                            "new", "no", "not", "now", "of", "on", "one",
+                            "only", "or", "other", "our", "out", "over", "own"
+                            "part", "person", "push", "say", "said", "see",
+                            "she", "so", "some", "take", "than", "that",
+                            "that's", "the", "their", "them", "then", "there",
+                            "these", "they", "think", "this", "those", "time",
+                            "to", "two", "up", "us", "use", "wait", "was",
+                            "way", "we", "well", "we'll", "were", "we've",
+                            "what", "when", "where", "which", "who", "why",
+                            "will", "with", "work", "would", "year", "you",
+                            "your"}
 
+            # Dictionary created. Key = word. Value = word frequency
+            result = {}
+            for item in document.split():
+                if item not in common_words:
+                    if item not in result:
+                        result[item] = 1
+                    else:
+                        result[item] += 1
 
-    # Dictionary created. Key = word. Value = word frequency
-    result = {}
-    for item in document.split():
-        if item not in common_words:
-            if item not in result:
-                result[item] = 1
-            else:
-                result[item] += 1
-
-    return result
+            return result
 
 ''' print table to be viewed by the user. '''
+
 
 def print_table(title, dict):
     # To mark out rows of the table
@@ -151,21 +153,23 @@ def print_table(title, dict):
     print(star)
 
     # column headings
-    print('*' + "Most Common Words".center(25) + '*' + "Times Appeared".center(25) + '*' +
-          "Percentage of Book".center(26) + '*')
+    print('*' + "Common Words".center(25) +
+          '*' + "Frequency".center(25) +
+          '*' + "% of Document".center(26) + '*')  # Column headings
     print(star)
 
     # Loop through dictionary to print word, frequency & % value too.
     for key, value in dict.items():
-        print('*' + key.center(25) + '*' + str(value).center(25) + '*' +
-              (str('{0:.2f}'.format(value / total_words)) + '%').center(26) + '*')
+        print('*' + key.center(25) + '*' + str(value).center(25) +
+              '*' + (str('{0:.2f}'.format(value / total_words)) +
+                     '%').center(26) + '*')
         print(star)
 
     # spacer between tables.
     print("\n")
 
 """
-main variables defined. 
+main variables defined.
 """
 
 
@@ -182,7 +186,7 @@ while True:
     # for words & word frequency, in lower case
     words_count_lower = document_dictionary(document.lower())
 
-    # check words and remove 128 common words, re dictionary, in lower case
+    # check words and remove 131 common words, re dictionary, in lower case
     words_count_uncommon = document_dictionary_uncommon(document.lower())
 
     # document total word count
@@ -195,7 +199,8 @@ while True:
     top_words_lower = dict(Counter(words_count_lower).most_common(10))
 
     # Dictionary inc top 10 uncommon words from document, lower case
-    top_uncommon_words_lower = dict(Counter(words_count_uncommon).most_common(10))
+    top_uncommon_words_lower = dict(Counter(words_count_uncommon)
+                                    .most_common(10))
 
     # ***************************
     # *** printing the tables ***
