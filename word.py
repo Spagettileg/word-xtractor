@@ -60,3 +60,10 @@ def get_txt_file():
             print("Invalid number - Please try again.") # Error message.
         except IndexError:
             print('Number choice out of range, please select between 1 and' + str(count)) # Error message
+            
+        document = open(filename, encoding="utf8") # Open selected document
+        content = document.read() # File text assigned to content
+        document.close() # Document closed when no longer viewed
+        document_string = str(content) # Document content assigned to string, then split string
+        
+        return document_string
